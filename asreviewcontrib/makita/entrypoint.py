@@ -171,6 +171,9 @@ class MakitaEntryPoint(BaseEntryPoint):
         )
         parser_script.set_defaults(func=self._add_script_cli)
 
+        parser_gui = subparsers.add_parser("gui")
+        parser_gui.set_defaults(func=self._template_gui)
+
         # parse the args and call the selected function
         args = parser.parse_args(argv)
         args.func(args)
@@ -210,6 +213,18 @@ class MakitaEntryPoint(BaseEntryPoint):
             export_fp = Path(args.output, script)
             self.file_handler.add_file(new_script, export_fp)
         self.file_handler.print_summary()
+
+    def _template_gui(self, args):
+        try:
+            import subprocess
+            import sys
+
+            app_path = Path(__file__).parent / "makita_gui.py"
+            subprocess.run(
+                [sys.executable, "-m", "streamlit", "run", str(app_path)], check=True
+            )
+        except Exception as e:
+            print(f"\u001b[31mFailed to launch GUI: {e}\u001b[0m")
 
 
 class TemplateRenderer:
