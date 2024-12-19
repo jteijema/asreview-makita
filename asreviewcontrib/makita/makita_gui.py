@@ -1,3 +1,4 @@
+import importlib.resources as resources
 from pathlib import Path
 from typing import Literal
 
@@ -145,22 +146,23 @@ div[data-testid="stVerticalBlockBorderWrapper"]:has(div.not-opaque-container):no
         return opaque_container.container(height=height, border=border)
 
 
-def scan_templates(folder_path):
-    folder = Path(folder_path)
-    if not folder.exists():
+def scan_templates(package, folder_name):
+    templates_path = resources.files(package) / folder_name
+    if not templates_path.exists():
         return {"scripts": [], "templates": []}
 
     scripts = [
-        f.name[7:-9] for f in folder.glob("script_*.template")
+        f.name[7:-9] for f in templates_path.glob("script_*.template")
     ]
     templates = [
-        f.name[9:-13] for f in folder.glob("template_*.template")
+        f.name[9:-13] for f in templates_path.glob("template_*.template")
     ]
     return {"scripts": scripts, "templates": templates}
 
 
-templates_folder = "asreviewcontrib/makita/templates"
-available_files = scan_templates(templates_folder)
+package_name = "asreviewcontrib.makita"
+folder_name = "templates"
+available_files = scan_templates(package_name, folder_name)
 st.set_page_config(layout="wide")
 
 # Sidebar Configuration
