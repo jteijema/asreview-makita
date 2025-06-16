@@ -18,8 +18,8 @@ pip install asreview>=2.0 asreview-insights>=1.5 asreview-datatools
 
 The performance on the following datasets is evaluated:
 
-- data/van_de_Schoot_2018.csv
 - data/prior_Smid_2020.csv
+- data/van_de_Schoot_2018.csv
 
 ## Run simulation
 
@@ -37,8 +37,8 @@ The following files are found in this project:
     ├── 📜README.md
     ├── 📜jobs.sh
     ├── 📂data
-    │   ├── 📜van_de_Schoot_2018.csv
     │   ├── 📜prior_Smid_2020.csv
+    │   ├── 📜van_de_Schoot_2018.csv
     ├── 📂generated_data
     │   ├── 📜dataset_with_priors.csv
     │   ├── 📜dataset_without_priors.csv
@@ -65,16 +65,16 @@ The following files are found in this project:
         ├── 📂tables
         |   ├── 📜data_descriptives.csv
         |   ├── 📜data_descriptives.xlsx
-        |   ├── 📜tds_sim_van_de_Schoot_2018.csv
-        |   ├── 📜tds_sim_van_de_Schoot_2018.xlsx
         |   ├── 📜tds_sim_prior_Smid_2020.csv
         |   ├── 📜tds_sim_prior_Smid_2020.xlsx
+        |   ├── 📜tds_sim_van_de_Schoot_2018.csv
+        |   ├── 📜tds_sim_van_de_Schoot_2018.xlsx
         |   ├── 📜tds_summary.csv
         |   ├── 📜tds_summary.xlsx
-        |   ├── 📜metrics_sim_van_de_Schoot_2018_metrics.csv
-        |   ├── 📜metrics_sim_van_de_Schoot_2018_metrics.xlsx
         |   ├── 📜metrics_sim_prior_Smid_2020_metrics.csv
         |   ├── 📜metrics_sim_prior_Smid_2020_metrics.xlsx
+        |   ├── 📜metrics_sim_van_de_Schoot_2018_metrics.csv
+        |   ├── 📜metrics_sim_van_de_Schoot_2018_metrics.xlsx
         |   ├── 📜metrics_summary.csv
         |   └── 📜metrics_summary.xlsx
         └── 📂figures
