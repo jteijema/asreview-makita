@@ -4,7 +4,7 @@ import shutil
 from dataclasses import dataclass
 from pathlib import Path
 
-from asreview.extensions import extensions
+from asreview import extensions
 
 from asreviewcontrib.makita import __version__
 from asreviewcontrib.makita.config import TEMPLATES_FP
@@ -100,6 +100,11 @@ class MakitaEntryPoint:
             help="Overwrite existing files in the output folder.",
         )
         parser_template.add_argument(
+            "--ai",
+            type=str,
+            help="AI to use for the template. E.g., 'elas_u4' or 'elas_h2'. ",
+        )
+        parser_template.add_argument(
             "--classifier",
             type=str,
             help="Classifier to use.",
@@ -143,11 +148,6 @@ class MakitaEntryPoint:
             "--impossible-models",
             nargs="+",
             help="Model combinations to exclude.",
-        )
-        parser_template.add_argument(
-            "--no-balance-strategy",
-            nargs="+",
-            help="Do not use a balance strategy.",
         )
 
         parser_template.set_defaults(func=self._template_cli)
@@ -304,6 +304,7 @@ class TemplateRenderer:
             "n_priors",
             "prior_seed",
             "model_seed",
+            "ai",
             "classifier",
             "feature_extractor",
             "querier",
